@@ -60,18 +60,29 @@ double evaluate_rpn(const std::string& expression) {
             
             if (token == "+") {
                 result = a + b;
-            } else if (token == "-") {
+            } 
+            else if (token == "-") {
                 result = a - b;
-            } else if (token == "*") {
+            } 
+            else if (token == "*") {
                 result = a * b;
-            } else if (token == "/") {
+            } 
+            else if (token == "/") {
                 if (b == 0.0) {
                     throw std::invalid_argument("Division by zero");
                 }
                 result = a / b;
-            } else if (token == "^") {
+            } 
+            else if (token == "^") {
                 result = std::pow(a, b);
-            } else {
+            } 
+            else if (token == "%") {
+                if (b == 0.0) {
+                    throw std::invalid_argument("Division by zero");
+                }
+                result = std::fmod(a,b);
+            }
+            else {
                 throw std::invalid_argument("Invalid operator: '" + token + "'");
             }
             
